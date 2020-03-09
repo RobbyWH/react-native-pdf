@@ -54,6 +54,7 @@ export type Props = {
   source: AssetId | Source,
   spacing?: number,
   style?: ViewStyleProp,
+  contentContainerStyle?: ViewStyleProp,
   testID?: string
 };
 
