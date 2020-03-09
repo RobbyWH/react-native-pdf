@@ -8,7 +8,7 @@
 
 'use strict';
 import React, {Component} from 'react';
-import {ScrollView, FlatList, View, StyleSheet, ViewPropTypes} from 'react-native';
+import {ScrollView, FlatList, View, StyleSheet, ViewPropTypes, ViewStylePropTypes} from 'react-native';
 
 import PropTypes from 'prop-types';
 
@@ -39,6 +39,7 @@ export default class PdfView extends Component {
         currentPage: PropTypes.number,
         onPageSingleTap: PropTypes.func,
         onScaleChanged: PropTypes.func,
+        contentContainerStyle: ViewStylePropTypes
     };
 
     static defaultProps = {
@@ -49,6 +50,7 @@ export default class PdfView extends Component {
         maxScale: MAX_SCALE,
         spacing: 10,
         style: {},
+        contentContainerStyle: {},
         fitPolicy: 2,
         horizontal: false,
         centerContent: false,
@@ -332,7 +334,7 @@ export default class PdfView extends Component {
                 contentContainerStyle={[{
                     justifyContent: 'center',
                     alignItems: 'center'
-                }, this.props.horizontal ? {height: this.state.contentContainerSize.height * this.state.scale} : {width: this.state.contentContainerSize.width * this.state.scale}]}
+                }, this.props.horizontal ? {height: this.state.contentContainerSize.height * this.state.scale} : {width: this.state.contentContainerSize.width * this.state.scale}, this.props.contentContainerStyle]}
                 horizontal={this.props.horizontal}
                 data={data}
                 renderItem={this._renderItem}
